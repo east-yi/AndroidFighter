@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
 
     <TextView
-        android:layout_width="wrap_content"
+        style="@style/top"
+        android:text="功能列表" />
+    <!-- 跑马灯-->
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="5dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:ellipsize="marquee"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:marqueeRepeatLimit="marquee_forever"-->
+        <!--android:text="从前有个山，山上有个庙，庙里有个小和尚，和尚和尚和....从前有个山，" />-->
+    <com.ycc.ui.GetFocsTextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="哈哈哈哈或或"
-        android:textSize="30sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textSize="14sp"
+        android:background="@color/colorAccent"
+        android:text="从前有个山，山上有个庙，庙里有个小和尚，和尚和尚和....从前有个山，"
         />
+    <GridView
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:numColumns="3"
+         />
 </LinearLayout>

@@ -10,4 +10,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+
+    <style name="top">
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">50dp</item>
+       <item name="android:background">@color/blue</item>
+       <item name="android:gravity">center </item>
+       <item name="android:textSize">17sp</item>
+    </style>
 </resources>
