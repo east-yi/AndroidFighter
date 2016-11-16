@@ -1,7 +1,10 @@
 package com.ycc.bodyguard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.ycc.adapter.gridViewAdapter;
@@ -19,7 +22,9 @@ public class HoemActivity extends ActivityManage {
         setContentView(R.layout.activity_hoem);
         iniView();
         iniData();
+        setListener();
     }
+
 
     private void iniView() {
         gridView = (GridView) findViewById(R.id.gridView);
@@ -37,8 +42,27 @@ public class HoemActivity extends ActivityManage {
                 R.drawable.home_sysoptimize, R.drawable.home_tools,
                 R.drawable.home_settings
         };
-       gridViewAdapter adapter=new gridViewAdapter(HoemActivity.this,arrayImage,arrayString);
+        gridViewAdapter adapter = new gridViewAdapter(HoemActivity.this, arrayImage, arrayString);
         gridView.setAdapter(adapter);
     }
 
+
+    private void setListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 8://卫士设置
+                        HoemActivity.this.startActivity(new Intent(HoemActivity.this,FighterSet.class));
+                        break;
+                }
+            }
+        });
+    }
 }
