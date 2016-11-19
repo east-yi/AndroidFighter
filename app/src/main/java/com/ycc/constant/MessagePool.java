@@ -5,7 +5,15 @@ package com.ycc.constant;
  */
 public interface MessagePool {
     /**
-     * 流解析完成
+     * 进入HOME界面的状态码
+     */
+    int GO_HOME=3;
+    /**
+     * 成功流解析完成
      */
     int IS_RESOLVE_OK=1;
+    /**
+     * 网络请求错误
+     */
+    int WIFI_NO=2;
 }

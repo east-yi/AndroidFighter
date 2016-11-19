@@ -13,7 +13,13 @@ import com.ycc.bodyguard.R;
  * Created by Administrator on 16-11-16.
  */
 public class EntryLayout extends RelativeLayout {
+    private final String NAME_INTERSPACE = "http://schemas.android.com/apk/res/com.ycc.bodyguard";
     private final CheckBox checkBox;
+    private String belowon;
+    private String belowff;
+    private String title;
+    TextView tvTitle;
+    TextView tvUpdate;
 
     public EntryLayout(Context context) {
         this(context, null);
@@ -25,11 +31,56 @@ public class EntryLayout extends RelativeLayout {
 
     public EntryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        //讲一个布局界面转换成View对象
+        //将一个布局界面转换成View对象
         View.inflate(context, R.layout.entry_layout, this);
-        TextView tvUpdate = (TextView) findViewById(R.id.tv_update_x);
+        tvTitle = (TextView) findViewById(R.id.tv_update_s);
+        tvUpdate = (TextView) findViewById(R.id.tv_update_x);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+
+        //获取自定义以及原生属性的值
+        initAttrs(attrs);
+        //把获取的值赋值控件
+        iniData();
+
+
     }
+
+    /**
+     * 获取自定义以及原生属性的值
+     */
+    public void initAttrs(AttributeSet attrs) {
+        //属性总个数
+//        int count=attrs.getAttributeCount();
+        //依次获得每一个属性
+//        for (int i=0;i<attrs.getAttributeCount();i++){
+//            //属性名
+//            attrs.getAttributeName(i);
+//            //属性值
+//            attrs.getAttributeValue(i);
+//        }
+        title = attrs.getAttributeValue(NAME_INTERSPACE, "titleName");
+        belowff = attrs.getAttributeValue(NAME_INTERSPACE, "belowff");
+        belowon = attrs.getAttributeValue(NAME_INTERSPACE, "belowon");
+    }
+
+    ;
+
+    /**
+     * 赋值给控件
+     */
+    private void iniData() {
+        if (title != null) tvTitle.setText(title);
+        if (belowff != null) tvUpdate.setText(belowff);
+        if (belowon != null) tvUpdate.setText(belowon);
+        checkBox.setChecked(true);
+        //不能同时设置
+//        if (belowff!=null&&belowon!=null) try {
+//            throw new Exception("不能同时设置肯定答应和否定答应");
+//        } catch (Exception e) {
+//            ReleaseCorrelation.showT("控件不能同时设置肯定答应和否定答应");
+//        }
+    }
+
 
     /**
      * 判断是否选中
@@ -42,7 +93,13 @@ public class EntryLayout extends RelativeLayout {
      * 点击调用,设置是否选中，点击调用
      */
     public void setChecked(boolean isChecked) {
+
         checkBox.setChecked(isChecked);
+        if (checkBox.isChecked()) {
+            tvUpdate.setText(belowon);
+        } else {
+            tvUpdate.setText(belowff);
+        }
     }
 
 

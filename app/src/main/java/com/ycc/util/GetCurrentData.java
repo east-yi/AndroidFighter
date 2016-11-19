@@ -12,7 +12,6 @@ import com.ycc.constant.Pool;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -20,10 +19,14 @@ import java.net.URL;
  */
 public class GetCurrentData {
 
+
     /**
      * 获得服务器版本号
      */
     public static void getServiceVersion(final Handler handler) {
+        final Message messageNo = handler.obtainMessage();
+        messageNo.arg1 = MessagePool.WIFI_NO;
+
 
         new Thread(new Runnable() {
             HttpURLConnection http = null;
@@ -47,20 +50,21 @@ public class GetCurrentData {
                         message.obj = json;
                         handler.sendMessage(message);
                     } else {
-                        ReleaseCorrelation.showT("请求失败！");
+                        handler.sendMessage(messageNo);
                     }
-                } catch (MalformedURLException e) {
-                    ReleaseCorrelation.handlerExceptoinHandler(e);
-                } catch (IOException e) {
-                    ReleaseCorrelation.handlerExceptoinHandler(e);
+                } catch (Exception e) {
                 } finally {
-                    if (http != null) {
+                    if (is != null) {
                         try {
                             is.close();
                         } catch (IOException e) {
-                            ReleaseCorrelation.handlerExceptoinHandler(e);
+                            messageNo.obj=e;
+                            handler.sendMessage(messageNo);
                         }
                         http.disconnect();
+                    }else {
+
+                        handler.sendMessage(messageNo);
                     }
                 }
             }

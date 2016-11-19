@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EntryLayout">
+        <attr name="titleName" format="string"/>
+        <attr name="belowff" format="string"/>
+        <attr name="belowon" format="string"/>
+    </declare-styleable>
+
+</resources>

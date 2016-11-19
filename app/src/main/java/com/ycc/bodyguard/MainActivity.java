@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ycc.constant.MessagePool;
@@ -17,6 +18,7 @@ import com.ycc.util.ActivityManage;
 import com.ycc.util.GetCurrentData;
 import com.ycc.util.ReleaseCorrelation;
 import com.ycc.util.Resolve;
+import com.ycc.util.SpUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +37,12 @@ public class MainActivity extends ActivityManage {
     String ApkUrl;
     private TextView tvVersions;
     private float versionNumber;
+    private RelativeLayout rl;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+//    private GoogleApiClient client;
 
 
     @Override
@@ -43,35 +51,18 @@ public class MainActivity extends ActivityManage {
         setContentView(R.layout.activity_main);
         //初始化控件
         initView();
-        //初始化数据
-        initData();
         //初始动画效果
         inianimation();
+        //初始化数据
+        initData();
     }
 
     private void inianimation() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(3000);
-        findViewById(R.id.main_rl).setAnimation(alphaAnimation);
+        rl.setAnimation(alphaAnimation);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        skipHomeActivity(MainActivity.this);
-    }
-
-    public Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.arg1) {
-                case MessagePool.IS_RESOLVE_OK:
-                    String json = msg.obj.toString();
-                   analysisJson(json);
-                    break;
-            }
-        }
-    };
 
     /**
      * 初始化数据
@@ -80,20 +71,27 @@ public class MainActivity extends ActivityManage {
         //当前版本名称
         tvVersions.setText(GetCurrentData.versionsName(this));
         versionNumber = GetCurrentData.versionsNumber(this);
-        //服务器版本
-        GetCurrentData.getServiceVersion(handler);
 
+        if (SpUtils.getBoolean(MainActivity.this,"isUpdate",false)){
+            GetCurrentData.getServiceVersion(handler);
+        }else {
+            //等待3秒进入HOME界面
+            handler.sendEmptyMessageDelayed(MessagePool.GO_HOME,3000);
+        }
     }
+
 
     /**
      * 初始化控件
      */
     private void initView() {
+
         tvVersions = (TextView) findViewById(R.id.tv_versions);
+        rl = (RelativeLayout) findViewById(R.id.main_rl);
     }
 
-    public void skipHomeActivity(MainActivity activity){
-        activity.startActivity(new Intent(activity,HoemActivity.class));
+    public void skipHomeActivity(MainActivity activity) {
+        activity.startActivity(new Intent(activity, HoemActivity.class));
         activity.finish();
     }
 
@@ -111,6 +109,7 @@ public class MainActivity extends ActivityManage {
                 //弹出对话框
                 AlertDialog.Builder buider = new AlertDialog.Builder(this);
                 buider.setIcon(R.drawable.ic_launcher)
+                        .setCancelable(false)
                         .setTitle("有最新版本")
                         .setMessage(newContent)
                         .setPositiveButton("更新", new DialogInterface.OnClickListener() {
@@ -142,7 +141,7 @@ public class MainActivity extends ActivityManage {
      *
      * @param apkUrl Apk地址
      */
-    private void downloadNewApk(final String apkUrl, Handler handler) {
+    private void downloadNewApk(final String apkUrl, final Handler handler) {
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -168,7 +167,9 @@ public class MainActivity extends ActivityManage {
                         Resolve.getResolve().installApk(MainActivity.this, apkPath);
                         //TODO 改配置文件的版本号
                     } else {
-                        ReleaseCorrelation.showT("下载请求失败！");
+                        Message me=handler.obtainMessage();
+                        me.arg1=MessagePool.WIFI_NO;
+                        handler.sendMessage(me);
                     }
 
                 } catch (Exception e) {
@@ -185,4 +186,32 @@ public class MainActivity extends ActivityManage {
         task.execute();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        skipHomeActivity(MainActivity.this);
+    }
+
+    public Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            //进入主界面
+            if(msg.what==MessagePool.GO_HOME) {
+                skipHomeActivity(MainActivity.this);
+            }
+            switch (msg.arg1) {
+                case MessagePool.IS_RESOLVE_OK:
+                    String json = msg.obj.toString();
+                    //服务器版本
+                    analysisJson(json);
+
+                    break;
+                case MessagePool.WIFI_NO:
+                    //服务器版本
+                   ReleaseCorrelation.showT("网络请求失败..");
+                    handler.sendEmptyMessageDelayed(MessagePool.GO_HOME, 2000);
+                    break;
+            }
+        }
+    };
 }
