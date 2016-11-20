@@ -10,32 +10,21 @@
         style="@style/top"
         android:text="设置中心" />
 
-    <com.ycc.ui.EntryLayout
-        xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
+    <com.ycc.ui.EntryLayout xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
         android:id="@+id/el_setting_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         Entry:belowff="自动更新已关闭"
         Entry:belowon="自动更新已开启"
-        Entry:titleName="是否开启自动更新"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.ycc.ui.EntryLayout>
+        Entry:titleName="是否开启自动更新"></com.ycc.ui.EntryLayout>
 
-    <com.ycc.ui.EntryLayout
-        xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
+    <com.ycc.ui.EntryLayout xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
         android:id="@+id/el"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         Entry:belowff="已关闭"
         Entry:belowon="已开启"
         Entry:titleName="是否开启来电显示">
-
     </com.ycc.ui.EntryLayout>
 
-    <com.ycc.ui.EntryLayout
-        xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        Entry:belowff="自动更新已关闭"
-        Entry:belowon="自动更新已开启"
-        Entry:titleName="是否开启来电显示">
-    </com.ycc.ui.EntryLayout>
 </LinearLayout>

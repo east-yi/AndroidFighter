@@ -26,14 +26,13 @@ public class GetCurrentData {
     public static void getServiceVersion(final Handler handler) {
         final Message messageNo = handler.obtainMessage();
         messageNo.arg1 = MessagePool.WIFI_NO;
-
-
         new Thread(new Runnable() {
             HttpURLConnection http = null;
             InputStream is = null;
 
             @Override
             public void run() {
+
                 try {
                     URL url = new URL(Pool.SERVIE_VERSION_INFO);
                     http = (HttpURLConnection) url.openConnection();
@@ -63,7 +62,6 @@ public class GetCurrentData {
                         }
                         http.disconnect();
                     }else {
-
                         handler.sendMessage(messageNo);
                     }
                 }

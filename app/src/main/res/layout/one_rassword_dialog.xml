@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/common_signin_btn_dark_text_default"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+
+        android:padding="18px"
+        android:text="查看防盗"
+        android:textColor="@color/blue"
+        android:textSize="22sp" />
+
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/et_password0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_signin_btn_dark_text_default"
+        android:hint="输入密码"
+        android:inputType="textPassword"
+        android:padding="10px" />
+
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/et_password1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/common_signin_btn_dark_text_default"
+        android:ems="10"
+        android:padding="10px"
+        android:hint="确定密码"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_signin_btn_dark_text_default"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10px"
+            android:text="确定"
+            />
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10px"
+            android:text="取消"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -70,16 +70,18 @@ public class EntryLayout extends RelativeLayout {
      */
     private void iniData() {
         if (title != null) tvTitle.setText(title);
-        if (belowff != null) tvUpdate.setText(belowff);
-        if (belowon != null) tvUpdate.setText(belowon);
-        checkBox.setChecked(true);
-        //不能同时设置
-//        if (belowff!=null&&belowon!=null) try {
-//            throw new Exception("不能同时设置肯定答应和否定答应");
-//        } catch (Exception e) {
-//            ReleaseCorrelation.showT("控件不能同时设置肯定答应和否定答应");
-//        }
+
+        if (belowon != null) {
+            tvUpdate.setText(belowon);
+            checkBox.setChecked(true);
+        }
+        if (belowff != null){
+            tvUpdate.setText(belowff);
+            checkBox.setChecked(false);
+        }
     }
+
+
 
 
     /**
