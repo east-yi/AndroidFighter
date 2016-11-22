@@ -1,0 +1,9 @@
+接收短信内容及对应功能描述(警惕：可以修改文字，不能修改结构)：
+#*play_alarm_music*#
+播放报警音乐
+#*GPS_trace*#
+GPS追踪
+#*remote_delete_data*#
+远程删除数据
+#*remote_lockScreen*#
+远程锁屏
