@@ -13,13 +13,13 @@ import com.ycc.bodyguard.R;
 /**
  * Created by Administrator on 16-11-16.
  */
-public class gridViewAdapter extends BaseAdapter {
+public class GridViewAdapter extends BaseAdapter {
 
     HoemActivity hoemActivity;
     int[] arrayImage;
     String[] arrayString;
 
-    public gridViewAdapter(HoemActivity hoemActivity, int[] arrayImage, String[] arrayString) {
+    public GridViewAdapter(HoemActivity hoemActivity, int[] arrayImage, String[] arrayString) {
         this.hoemActivity = hoemActivity;
         this.arrayImage = arrayImage;
         this.arrayString = arrayString;

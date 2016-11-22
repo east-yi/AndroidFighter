@@ -39,4 +39,33 @@ public class SpUtils {
         }
         return sp.getString(key,defValue);
     }
+
+
+    //写BooleanS
+    public static void putBooleanS(Context context,String key,boolean value){
+        if(sp==null){
+            sp=context.getSharedPreferences("Setting",Context.MODE_PRIVATE);
+        }
+        sp.edit().putBoolean(key,value).commit();
+    }
+    //读BooleanS
+    public static boolean getBooleanS(Context context, String key, boolean defValue){
+        if(sp==null){
+            sp=context.getSharedPreferences("Setting",Context.MODE_PRIVATE);
+        }
+        return sp.getBoolean(key,defValue);
+    }
+
+
+    /**
+     * 删除节点
+     * @param context
+     * @param key
+     */
+    public static void remove(Context context, String key) {
+        if(sp==null){
+            sp=context.getSharedPreferences("Setting",Context.MODE_PRIVATE);
+        }
+       sp.edit().remove(key).commit();
+    }
 }

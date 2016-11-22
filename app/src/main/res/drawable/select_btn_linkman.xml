@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--选中下一页-->
+    <item android:state_pressed="true" android:drawable="@drawable/select_btn_linkman_shape1">
+    </item>
+    <!--默认-->
+    <item android:drawable="@drawable/select_btn_linkman_shape" >
+    </item>
+</selector>
+
+

@@ -11,7 +11,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 
-import com.ycc.adapter.gridViewAdapter;
+import com.ycc.adapter.GridViewAdapter;
+import com.ycc.bodyguard.MobileVTD.VTDActivity;
 import com.ycc.constant.Pool;
 import com.ycc.constant.SpKeyPool;
 import com.ycc.util.ActivityManage;
@@ -57,7 +58,7 @@ public class HoemActivity extends ActivityManage {
                 R.drawable.home_sysoptimize, R.drawable.home_tools,
                 R.drawable.home_settings
         };
-        gridViewAdapter adapter = new gridViewAdapter(HoemActivity.this, arrayImage, arrayString);
+        GridViewAdapter adapter = new GridViewAdapter(HoemActivity.this, arrayImage, arrayString);
         gridView.setAdapter(adapter);
     }
 

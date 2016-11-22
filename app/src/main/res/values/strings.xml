@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">保卫萝卜</string>
+    <string name="Navigation1">通过绑定sim卡
+        \n下次重启手机如果发现sim卡变化
+        \n就会发送报警短信</string>
+    <string name="Navigation2">sim卡变更后
+        \n报警短信会发送到安全号码
+        </string>
 </resources>

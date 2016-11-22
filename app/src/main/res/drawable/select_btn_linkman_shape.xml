@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--radius:内切员半径-->
+    <corners
+        android:radius="20dp"
+        />
+    <!--startColor：开始颜色-->
+    <!--endColor：  结束颜色-->
+    <!--angle：     渐变角度-->
+    <gradient
+        android:startColor="@color/blue"
+        android:endColor="@color/common_signin_btn_dark_text_default"
+        android:angle="90"
+        ></gradient>
+
+    <solid android:color="@color/colorAccent"/>
+    <!--固体-->
+
+</shape>

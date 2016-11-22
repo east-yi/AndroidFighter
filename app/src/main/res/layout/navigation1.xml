@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/top"
+
+        android:text="手机卡绑定-2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/Navigation1"
+        android:textSize="20sp" />
+
+
+    <com.ycc.ui.EntryLayout
+        xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
+        android:id="@+id/etl_bdSim"
+        android:layout_width="match_parent"
+        Entry:titleName="点击绑定sim卡"
+        Entry:belowon="sim卡已绑定"
+        Entry:belowff="sim卡没有绑定"
+        android:layout_height="wrap_content">
+    </com.ycc.ui.EntryLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="5px"
+            android:src="@android:drawable/presence_invisible"
+             />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="5px"
+            android:src="@android:drawable/presence_online" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="5px"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="5px"
+            android:src="@android:drawable/presence_invisible" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_signin_btn_dark_text_focused">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bind" />
+
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/btnNext" />
+
+        <Button
+            android:id="@+id/btn_top"
+            style="@style/btnTop" />
+    </RelativeLayout>
+</LinearLayout>
