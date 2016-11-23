@@ -33,7 +33,6 @@ public class VTDActivity extends ActivityManage {
         }else{
             enterGuideLayout();
         }
-
     }
 
     private void iniView() {

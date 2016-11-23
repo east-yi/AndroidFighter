@@ -6,4 +6,6 @@
     <string name="Navigation2">sim卡变更后
         \n报警短信会发送到安全号码
         </string>
+    <string name="description">开启设备管理器，允许锁屏，允许远程删除数据</string>
+    <string name="sample_device_admin">保卫萝卜斗士</string>
 </resources>

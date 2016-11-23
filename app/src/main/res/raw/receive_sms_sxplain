@@ -6,4 +6,6 @@ GPS追踪
 #*remote_delete_data*#
 远程删除数据
 #*remote_lockScreen*#
-远程锁屏
+远程锁屏；密码为当天日期：比如：20161102
+#*remote_unload*#
+远程卸载本软件

@@ -53,6 +53,7 @@ public class Navigation1 extends NavigatManage implements View.OnClickListener{
         AnimUtils.setLeftAnim(Navigation1.this);
     }
 
+
     private void iniData() {
         value=SpUtils.getString(this,SpKeyPool.IS_DBSIM,"");
         if (TextUtils.isEmpty(value)) {
@@ -77,8 +78,12 @@ public class Navigation1 extends NavigatManage implements View.OnClickListener{
                 if (etlBdSim.isChecked()) {
                     //获取SIM卡号
                     TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                    String sim = telephony.getSimSerialNumber();
+                    if(TextUtils.isEmpty(sim)){
+                        return;
+                    }
                     //存
-                    SpUtils.putString(Navigation1.this,SpKeyPool.IS_DBSIM,telephony.getSimSerialNumber());
+                    SpUtils.putString(Navigation1.this,SpKeyPool.IS_DBSIM,sim);
                 }else{
                     //删除节点
                     SpUtils.remove(Navigation1.this,SpKeyPool.IS_DBSIM);

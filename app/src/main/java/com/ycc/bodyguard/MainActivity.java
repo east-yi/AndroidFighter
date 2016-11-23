@@ -1,8 +1,12 @@
 package com.ycc.bodyguard;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,17 +42,17 @@ public class MainActivity extends ActivityManage {
     private TextView tvVersions;
     private float versionNumber;
     private RelativeLayout rl;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
 //    private GoogleApiClient client;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //初始化控件
         initView();
         //初始动画效果
@@ -56,7 +60,6 @@ public class MainActivity extends ActivityManage {
         //初始化数据
         initData();
     }
-
     private void inianimation() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(3000);
@@ -72,11 +75,11 @@ public class MainActivity extends ActivityManage {
         tvVersions.setText(GetCurrentData.versionsName(this));
         versionNumber = GetCurrentData.versionsNumber(this);
 
-        if (SpUtils.getBoolean(MainActivity.this,"isUpdate",false)){
+        if (SpUtils.getBoolean(MainActivity.this, "isUpdate", false)) {
             GetCurrentData.getServiceVersion(handler);
-        }else {
+        } else {
             //等待3秒进入HOME界面
-            handler.sendEmptyMessageDelayed(MessagePool.GO_HOME,3000);
+            handler.sendEmptyMessageDelayed(MessagePool.GO_HOME, 3000);
         }
     }
 
@@ -167,8 +170,8 @@ public class MainActivity extends ActivityManage {
                         Resolve.getResolve().installApk(MainActivity.this, apkPath);
                         //TODO 改配置文件的版本号
                     } else {
-                        Message me=handler.obtainMessage();
-                        me.arg1=MessagePool.WIFI_NO;
+                        Message me = handler.obtainMessage();
+                        me.arg1 = MessagePool.WIFI_NO;
                         handler.sendMessage(me);
                     }
 
@@ -196,7 +199,7 @@ public class MainActivity extends ActivityManage {
         @Override
         public void handleMessage(Message msg) {
             //进入主界面
-            if(msg.what==MessagePool.GO_HOME) {
+            if (msg.what == MessagePool.GO_HOME) {
                 skipHomeActivity(MainActivity.this);
             }
             switch (msg.arg1) {
@@ -208,7 +211,7 @@ public class MainActivity extends ActivityManage {
                     break;
                 case MessagePool.WIFI_NO:
                     //服务器版本
-                   ReleaseCorrelation.showT("网络请求失败..");
+                    ReleaseCorrelation.showT("网络请求失败..");
                     handler.sendEmptyMessageDelayed(MessagePool.GO_HOME, 2000);
                     break;
             }
