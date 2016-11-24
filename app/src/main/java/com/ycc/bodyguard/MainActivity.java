@@ -1,12 +1,8 @@
 package com.ycc.bodyguard;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,6 +25,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -59,7 +56,51 @@ public class MainActivity extends ActivityManage {
         inianimation();
         //初始化数据
         initData();
+        //初始化数据库
+        iniDB();
     }
+
+    /**
+     * 初始化数据库
+     */
+    private void iniDB() {
+        //从资源文件拷贝电话号码及归属地到数据库
+        initAddressDB("address.db");
+    }
+
+    /**
+     * 从资源文件拷贝电话号码及归属地到数据库
+     */
+    private void initAddressDB(String dbName) {
+        //存放位置
+        File filePosition = new File(getFilesDir(), dbName);
+        if(filePosition.exists()){
+            return;
+        }
+        InputStream is=null;
+        FileOutputStream os=null;
+        try {
+             is = getAssets().open(dbName);
+             os=new FileOutputStream(filePosition);
+            byte[] bt=new byte[3072];
+            int tep=-1;
+            while ((tep=is.read(bt)) != -1) {
+                os.write(bt,0,tep);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(is!=null&&os!=null){
+                try {
+                    is.close();
+                    os.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     private void inianimation() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(3000);

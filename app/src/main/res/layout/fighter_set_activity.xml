@@ -19,12 +19,12 @@
         Entry:titleName="是否开启自动更新"></com.ycc.ui.EntryLayout>
 
     <com.ycc.ui.EntryLayout xmlns:Entry="http://schemas.android.com/apk/res/com.ycc.bodyguard"
-        android:id="@+id/el"
+        android:id="@+id/el_show_qcellCore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         Entry:belowff="已关闭"
         Entry:belowon="已开启"
-        Entry:titleName="是否开启来电显示">
+        Entry:titleName="是否开启来电显示归属地">
     </com.ycc.ui.EntryLayout>
 
 </LinearLayout>

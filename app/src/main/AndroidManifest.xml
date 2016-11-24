@@ -18,6 +18,8 @@
     <!--定位相关权限-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!--GPS坐标权限-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!--粗略坐标权限【网络定位时用】-->
+    <!--震动权限-->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 
     <application
@@ -25,8 +27,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:persistent="true"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -72,24 +74,33 @@
         <activity
             android:name=".MobileVTD.LinkmanActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"></activity>
+        <activity
+            android:name=".AdvancedTool.AdvancedToolActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".AdvancedTool.QueryAddressActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"></activity>
         <!--广播============================================================================-->
         <!--开机广播-->
         <receiver android:name="com.ycc.broadcast.StartingUpBroadcast">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <!--&lt;!&ndash;接收短信广播&ndash;&gt;-->
         <receiver android:name="com.ycc.broadcast.SMSBroadcast">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
         <!--开始设备管理器的广播-->
-        <receiver android:name="com.ycc.broadcast.DeviceAdmin"
-            android:label="@string/sample_device_admin"
+        <receiver
+            android:name="com.ycc.broadcast.DeviceAdmin"
             android:description="@string/description"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample" />
@@ -99,8 +110,8 @@
         </receiver>
         <!--服务============================================================================-->
         <!--接收定位短信，发送位置信息的服务-->
-        <service android:name="com.ycc.service.MyService" >
-        </service>
+        <service android:name="com.ycc.service.MyService"></service>
+        <service android:name="com.ycc.service.ShowFloatService"></service>
 
     </application>
 

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import com.ycc.adapter.GridViewAdapter;
+import com.ycc.bodyguard.AdvancedTool.AdvancedToolActivity;
 import com.ycc.bodyguard.MobileVTD.VTDActivity;
 import com.ycc.constant.Pool;
 import com.ycc.constant.SpKeyPool;
@@ -74,6 +75,9 @@ public class HoemActivity extends ActivityManage {
                     case 1:
                         break;
                     case 2:
+                        break;
+                    case 7://高级工具
+                        HoemActivity.this.startActivity(new Intent(HoemActivity.this,AdvancedToolActivity.class));
                         break;
                     case 8://设置中心
                         HoemActivity.this.startActivity(new Intent(HoemActivity.this, FighterSet.class));

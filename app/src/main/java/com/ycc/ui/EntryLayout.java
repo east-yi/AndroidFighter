@@ -99,6 +99,7 @@ public class EntryLayout extends RelativeLayout {
         checkBox.setChecked(isChecked);
         if (checkBox.isChecked()) {
             tvUpdate.setText(belowon);
+
         } else {
             tvUpdate.setText(belowff);
         }
