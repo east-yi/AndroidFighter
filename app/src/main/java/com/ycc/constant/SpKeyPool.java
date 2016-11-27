@@ -25,4 +25,8 @@ public interface SpKeyPool {
      * 手机防盗导航3.是否开启防盗
      */
     String OPEN_SAFETY="open_safety";
+    /**
+     * 号码归属地的浮动Toast的颜色数组的索引
+     */
+    String FLOAT_TOAST_COLOR="float_toast_color";
 }

@@ -17,7 +17,7 @@ public class AddressDao {
     public static String queryPhone(String phone) {
 //        boolean isMatches=QCellCore.matches("\\^1[3-8]\\d{9}");
 //        if(isMatches) {
-        if (phone.length() > 7) {
+        if (phone.length() >= 7) {
             phone = phone.substring(0, 7);
             db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
             //先用号码查对应的关联表数据

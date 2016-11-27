@@ -68,4 +68,20 @@ public class SpUtils {
         }
        sp.edit().remove(key).commit();
     }
+
+
+    //写int
+    public static void putint(Context context,String key,int value){
+        if(sp==null){
+            sp=context.getSharedPreferences("Setting",Context.MODE_PRIVATE);
+        }
+        sp.edit().putInt(key,value).commit();
+    }
+    //读int
+    public static int getint(Context context, String key, int defValue){
+        if(sp==null){
+            sp=context.getSharedPreferences("Setting",Context.MODE_PRIVATE);
+        }
+        return sp.getInt(key,defValue);
+    }
 }

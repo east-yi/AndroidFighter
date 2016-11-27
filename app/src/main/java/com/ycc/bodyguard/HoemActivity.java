@@ -14,6 +14,7 @@ import android.widget.GridView;
 import com.ycc.adapter.GridViewAdapter;
 import com.ycc.bodyguard.AdvancedTool.AdvancedToolActivity;
 import com.ycc.bodyguard.MobileVTD.VTDActivity;
+import com.ycc.bodyguard.SetCentre.FighterSet;
 import com.ycc.constant.Pool;
 import com.ycc.constant.SpKeyPool;
 import com.ycc.util.ActivityManage;

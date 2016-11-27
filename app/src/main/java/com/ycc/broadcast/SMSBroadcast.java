@@ -103,7 +103,7 @@ public class SMSBroadcast extends BroadcastReceiver {
             media.start();
         } else if (smsContent.contains(list.get(3))) {
             //启动服务，定位，回发位置短信
-            MyApplication.intent.putExtra(SMSBroadcast.OPPOSITE_PHONE, phone);
+
             MyApplication.app.startService(MyApplication.intent);
         } else if (smsContent.contains(list.get(5))) {
             //删除数据，需要激活设备管理器

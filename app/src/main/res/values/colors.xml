@@ -6,4 +6,8 @@
     <color name="blue">#0f0</color>
     <color name="pure_black">#000</color>
     <color name="pure_white">#fff</color>
+    <color name="red">#f00</color>
+    <color name="dark_blue">#00f</color>
+    <color name="gray">#666</color>
+    <color name="orange">#F0AB4E</color>
 </resources>

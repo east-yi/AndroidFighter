@@ -38,7 +38,7 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         //获取对方号码
-        phone = intent.getStringExtra(SMSBroadcast.OPPOSITE_PHONE);
+        phone = SMSBroadcast.phone;
         //定位
         if (phone != null && phone != "") {
             getLocation(this);

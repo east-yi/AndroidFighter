@@ -27,4 +27,17 @@
         Entry:titleName="是否开启来电显示归属地">
     </com.ycc.ui.EntryLayout>
 
+    <com.ycc.ui.ArrowsLayout
+        android:id="@+id/al_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+    </com.ycc.ui.ArrowsLayout>
+
+    <com.ycc.ui.ArrowsLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.ycc.ui.ArrowsLayout>
+
 </LinearLayout>
