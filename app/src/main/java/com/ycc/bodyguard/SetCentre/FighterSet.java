@@ -29,6 +29,7 @@ public class FighterSet extends ActivityManage {
     private ArrowsLayout arrows;
     private int colorIndex;
     private String[] arrayColor;
+    private ArrowsLayout toastPosition;
 
 
     @Override
@@ -73,7 +74,10 @@ public class FighterSet extends ActivityManage {
         }
         //3.设置浮动颜色
         arrows = (ArrowsLayout) findViewById(R.id.al_color);
-
+        //4.设置Toast位置
+        toastPosition = (ArrowsLayout) findViewById(R.id.al_position);
+        toastPosition.setTvTitle("归属地提示框位置");
+        toastPosition.setTvColor("设置归属地提示框位置");
     }
 
     private void setListener() {
@@ -81,6 +85,7 @@ public class FighterSet extends ActivityManage {
         settingLayout.setOnClickListener(eoc);
         showqcellCore.setOnClickListener(eoc);
         arrows.setOnClickListener(eoc);
+        toastPosition.setOnClickListener(eoc);
     }
 
     class EntryLayoutOnClickListener implements View.OnClickListener {
@@ -111,6 +116,9 @@ public class FighterSet extends ActivityManage {
                     //弹出选择颜色对话框
                     showColorDialog();
                     break;
+                case R.id.al_position://设置Toast位置
+                    //跳转界面
+                    FighterSet.this.startActivity(new Intent(FighterSet.this,ToastPosition.class));
             }
         }
     }

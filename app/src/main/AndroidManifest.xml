@@ -86,6 +86,13 @@
             android:name=".AdvancedTool.QueryAddressActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".SetCentre.ToastPosition"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            ></activity>
+
         <!--广播============================================================================-->
         <!--开机广播-->
         <receiver android:name="com.ycc.broadcast.StartingUpBroadcast">

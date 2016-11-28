@@ -29,4 +29,13 @@ public interface SpKeyPool {
      * 号码归属地的浮动Toast的颜色数组的索引
      */
     String FLOAT_TOAST_COLOR="float_toast_color";
+
+    /**
+     * 悬浮Toast的位置X
+     */
+    String TOAST_X_POSITION ="toast_x_position";
+    /**
+     * 悬浮Toast的位置X
+     */
+    String TOAST_Y_POSITION ="toast_y_position";
 }

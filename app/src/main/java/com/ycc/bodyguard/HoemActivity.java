@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -64,9 +65,14 @@ public class HoemActivity extends ActivityManage {
         gridView.setAdapter(adapter);
     }
 
+    View viewToast = null;
+    WindowManager mWM = null;
 
     private void setListener() {
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
@@ -74,11 +80,23 @@ public class HoemActivity extends ActivityManage {
                         showDialog();
                         break;
                     case 1:
+//                        if (mWM != null && viewToast != null)return;
+//                        //窗体对象
+//                        mWM = (WindowManager) HoemActivity.this.getSystemService(Context.WINDOW_SERVICE);
+//                        //显示效果：自定义布局
+//                        viewToast = View.inflate(HoemActivity.this, R.layout.toast_view, null);
+//                        //弹出自定义Toast
+                        ReleaseCorrelation.customToast(HoemActivity.this, mWM, viewToast, "阿西吧！！");
                         break;
                     case 2:
+//                        if (mWM != null && viewToast != null) {
+//                            mWM.removeView(viewToast);
+//                            mWM = null;
+//                            viewToast = null;
+//                        }
                         break;
                     case 7://高级工具
-                        HoemActivity.this.startActivity(new Intent(HoemActivity.this,AdvancedToolActivity.class));
+                        HoemActivity.this.startActivity(new Intent(HoemActivity.this, AdvancedToolActivity.class));
                         break;
                     case 8://设置中心
                         HoemActivity.this.startActivity(new Intent(HoemActivity.this, FighterSet.class));
@@ -116,25 +134,25 @@ public class HoemActivity extends ActivityManage {
         view.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etPassword0.getText().toString().equals(etPassword1.getText().toString())){
+                if (etPassword0.getText().toString().equals(etPassword1.getText().toString())) {
                     //加密
-                    String passwrod=Encrypt.getInstance().stringEncrypt(etPassword0.getText().toString(),Pool.ADD_SALT);
-                   // 存入Sp
-                    SpUtils.putString(HoemActivity.this,SpKeyPool.MOBILE_VTD,passwrod);
+                    String passwrod = Encrypt.getInstance().stringEncrypt(etPassword0.getText().toString(), Pool.ADD_SALT);
+                    // 存入Sp
+                    SpUtils.putString(HoemActivity.this, SpKeyPool.MOBILE_VTD, passwrod);
                     ReleaseCorrelation.showT("设置成功！");
                     diaLog.cancel();
                     vidModule();
-                }else{
+                } else {
                     ReleaseCorrelation.showT("输入有误！");
                 }
-                view=null;
+                view = null;
             }
         });
         view.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 diaLog.cancel();
-                view=null;
+                view = null;
             }
 
         });
@@ -155,23 +173,23 @@ public class HoemActivity extends ActivityManage {
         view.findViewById(R.id.btn_yes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String value=SpUtils.getString(HoemActivity.this,SpKeyPool.MOBILE_VTD,"");
+                String value = SpUtils.getString(HoemActivity.this, SpKeyPool.MOBILE_VTD, "");
                 //加密
-                String passwrod=Encrypt.getInstance().stringEncrypt(etPassword0.getText().toString(),Pool.ADD_SALT);
-                if(passwrod.equals(value)){
+                String passwrod = Encrypt.getInstance().stringEncrypt(etPassword0.getText().toString(), Pool.ADD_SALT);
+                if (passwrod.equals(value)) {
                     diaLog.cancel();
                     vidModule();
-                }else{
+                } else {
                     ReleaseCorrelation.showT("密码错误！");
                 }
-                view=null;
+                view = null;
             }
         });
         view.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 diaLog.cancel();
-                view=null;
+                view = null;
             }
         });
     }
@@ -179,10 +197,9 @@ public class HoemActivity extends ActivityManage {
     /**
      * 跳转防盗模块
      */
-    public void vidModule(){
-        HoemActivity.this.startActivity(new Intent(HoemActivity.this,VTDActivity.class));
+    public void vidModule() {
+        HoemActivity.this.startActivity(new Intent(HoemActivity.this, VTDActivity.class));
     }
-
 
 
 }

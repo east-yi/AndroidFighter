@@ -50,6 +50,8 @@ public class ShowFloatService extends Service{
                 case TelephonyManager.CALL_STATE_IDLE:
                     if(mWM!=null&&viewToast!=null){
                         mWM.removeView(viewToast);
+                        mWM=null;
+                        viewToast=null;
                     }
                     break;
                 //摘机状态，至少拨打或通话其中一种
@@ -57,14 +59,13 @@ public class ShowFloatService extends Service{
                     break;
                 //响铃状态
                 case TelephonyManager.CALL_STATE_RINGING:
+                    if(mWM !=null&&viewToast!=null){return;};
                     //窗体对象
                     mWM = (WindowManager) ShowFloatService.this.getSystemService(Context.WINDOW_SERVICE);
                     //显示效果：自定义布局
                    viewToast = View.inflate(ShowFloatService.this, R.layout.toast_view, null);
-
                     //查询数据库，设置归属地
                     String string = AddressDao.queryPhone(incomingNumber);
-                    ReleaseCorrelation.showT(incomingNumber+"=======");
                     //弹出自定义Toast
                     ReleaseCorrelation.customToast(ShowFloatService.this,mWM,viewToast,string);
                     break;
